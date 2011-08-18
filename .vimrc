@@ -19,5 +19,16 @@ syntax enable
 
 " autocommands
 if has( "autocmd" )
-	autocmd BufEnter * :lcd %:p:h  " set current dir
+    autocmd BufEnter * :lcd %:p:h  " set current dir
 endif
+
+" Bubble single line
+nmap <C-Up> [e
+nmap <C-Down> ]e
+" Bubble multiple lines
+vmap <C-Up> [egv
+vmap <C-Down> ]egv
+
+" NERD tree
+nmap <silent> <c-n> :NERDTreeToggle<CR>
+let g:miniBufExplorerMoreThanOne = 0
