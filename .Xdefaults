@@ -1,0 +1,64 @@
+! autor: Lech Twaróg
+!  rxvt-unicode
+
+URxvt.termName          : rxvt-256color
+URxvt*urgentOnBell      : true
+URxvt*visualBell        : true
+URxvt*skipBuiltinGlyphs : true
+URxvt*borderless        : true
+URxvt*scrollBar         : false
+URxvt*saveLines         : 6600 
+URxvt.buffered          :  true
+URxvt.shading           : 25 
+URxvt*transparent       : True 
+  
+URxvt*perl-lib          : /usr/lib/urxvt/perl/
+URxvt*perl-ext-common   : default,matcher
+URxvt*urlLauncher       : /usr/bin/chromium  
+urxvt*matcher.button    : 1
+
+!FONTS 
+   
+!URxvt*font:              -*-terminusmod-medium-r-normal-*-12-*-*-*-*-*-*-*
+!URxvt*boldFont:          -*-terminusmod-bold-r-normal-*-12-*-*-*-*-*-*-*
+ 
+URxvt*font: xft:Monospace:pixelsize=9   
+!URxvt*font: xft:Bitstream Vera Sans Mono:style=Regular:pixelsize=9  
+!URxvt*font:     -xos4-terminus-medium-*-*-*-12-*-*-*-*-*-iso8859-2
+!URxvt*boldFont: -xos4-terminus-bold-*-*-*-12-*-*-*-*-*-iso8859-2
+ 
+!Xft settings 
+
+Xft.dpi:          96
+Xft.antialias:    true
+Xft.rgba:         rgb
+Xft.hinting:      true
+Xft.hintstyle:    hintslight
+Xft.lcdfilter:    lcddefault 
+
+urxvt*background:  #333333
+urxvt*foreground:  #ffffff
+  
+*color0:  #333333
+ *color8:  #3D3D3D
+!red
+ *color1:  #975452
+ *color9:  #9A605E
+!green
+ *color2:  #579357
+ *color10: #579557
+!yellow
+ *color3:  #A8A258
+ *color11: #B1AB5C
+!blue
+ *color4:  #55758C
+ *color12: #577A93
+!magenta
+ *color5:  #B06792
+ *color13: #B16D95
+!cyan
+ *color6:  #528784
+ *color14: #558C89
+!white
+ *color7:  #899CA1
+ *color15: #C0C0C0
