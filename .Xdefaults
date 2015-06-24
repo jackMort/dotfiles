@@ -9,23 +9,31 @@ URxvt*borderless        : true
 URxvt*scrollBar         : false
 URxvt*saveLines         : 6600 
 URxvt.buffered          :  true
-URxvt.shading           : 25 
+URxvt.shading           : 40
 URxvt*transparent       : True 
-  
-URxvt*perl-lib          : /usr/lib/urxvt/perl/
-URxvt*perl-ext-common   : default,matcher
+ 
+! put it in ~/.urxvt/
+URxvt.perl-lib: .urxvt/
+URxvt.perl-ext-common: default,matcher,tabbed
+
+URxvt.url-launcher: /usr/bin/firefox
+URxvt.matcher.button: 1 
 URxvt*urlLauncher       : /usr/bin/chromium  
 urxvt*matcher.button    : 1
+
+URxvt*geometry: 140x30
 
 !FONTS 
    
 !URxvt*font:              -*-terminusmod-medium-r-normal-*-12-*-*-*-*-*-*-*
 !URxvt*boldFont:          -*-terminusmod-bold-r-normal-*-12-*-*-*-*-*-*-*
  
-URxvt*font: xft:Monospace:pixelsize=9   
+URxvt*font: xft:Monospace:pixelsize=10
 !URxvt*font: xft:Bitstream Vera Sans Mono:style=Regular:pixelsize=9  
 !URxvt*font:     -xos4-terminus-medium-*-*-*-12-*-*-*-*-*-iso8859-2
 !URxvt*boldFont: -xos4-terminus-bold-*-*-*-12-*-*-*-*-*-iso8859-2
+URxvt*font: -*-terminus-medium-r-*-*-14-*-*-*-*-*-*-u
+URxvt*font: xft:Terminus:style=Regular:pixelsize=12.5:antialias=true
  
 !Xft settings 
 
@@ -36,29 +44,41 @@ Xft.hinting:      true
 Xft.hintstyle:    hintslight
 Xft.lcdfilter:    lcddefault 
 
-urxvt*background:  #333333
-urxvt*foreground:  #ffffff
-  
-*color0:  #333333
- *color8:  #3D3D3D
+urxvt*background:  #1A1A1A
+urxvt*foreground:  #DDDDFF
+! Powerarrow Darker
+
+*.background: #1A1A1A
+*.foreground: #DDDDFF
+
+!black
+*color0: #1A1A1A
+*color8: #6E6E6E
+
 !red
- *color1:  #975452
- *color9:  #9A605E
+*color1: #AF5360
+*color9: #EA6F81
+
 !green
- *color2:  #579357
- *color10: #579557
+*color2: 447019
+*color10: #7BAB4E
+
 !yellow
- *color3:  #A8A258
- *color11: #B1AB5C
+*color3: #D8D782
+*color11: #CFCD63
+
 !blue
- *color4:  #55758C
- *color12: #577A93
+*color12: #92ADCB
+*color4: #648BB5
+
 !magenta
- *color5:  #B06792
- *color13: #B16D95
+*color5: #E5C8D6
+*color13: #CB92AD
+
 !cyan
- *color6:  #528784
- *color14: #558C89
+*color6: #406E6F
+*color14: #81DCDE
+
 !white
- *color7:  #899CA1
- *color15: #C0C0C0
+*color7: #C6C6E5
+*color15: #DDDDFF
