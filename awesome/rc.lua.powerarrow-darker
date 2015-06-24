@@ -18,8 +18,6 @@ local drop      = require("scratchdrop")
 local lain      = require("lain")
 -- }}}
 
-awful.util.spawn_with_shell("xcompmgr &")
-
 -- {{{ Error handling
 if awesome.startup_errors then
     naughty.notify({ preset = naughty.config.presets.critical,
@@ -52,8 +50,6 @@ function run_once(cmd)
 end
 
 run_once("urxvtd")
-run_once("urxvt")
---run_once("chromium")
 run_once("unclutter")
 -- }}}
 
@@ -68,7 +64,7 @@ beautiful.init(awful.util.getdir("config") .. "/themes/powerarrow-darker/theme.l
 modkey     = "Mod4"
 altkey     = "Mod1"
 terminal   = "urxvtc" or "xterm"
-editor     = os.getenv("EDITOR") or "nano" or "vim"
+editor     = os.getenv("EDITOR") or "nano" or "vi"
 editor_cmd = terminal .. " -e " .. editor
 
 -- user defined
@@ -247,10 +243,6 @@ netwidget = wibox.widget.background(lain.widgets.net({
     end
 }), "#313131")
 
--- Cex.io
-cexio = wibox.widget.textbox()
-cexio:set_text("cex.io ...")
-
 -- Separators
 spr = wibox.widget.textbox(' ')
 arrl = wibox.widget.imagebox()
@@ -262,7 +254,6 @@ arrl_ld:set_image(beautiful.arrl_ld)
 
 -- Create a wibox for each screen and add it
 mywibox = {}
-mybottomwibox = {}
 mypromptbox = {}
 mylayoutbox = {}
 mytaglist = {}
@@ -330,11 +321,6 @@ for s = 1, screen.count() do
 
     -- Create the wibox
     mywibox[s] = awful.wibox({ position = "top", screen = s, height = 18 })
-    mybottomwibox[s] = awful.wibox({ position = "bottom", screen = s, height = 18 })
-
-    local left_bottom_layout = wibox.layout.fixed.horizontal()
-    left_bottom_layout:add(cexio)
-    mybottomwibox[s]:set_widget(left_bottom_layout)
 
     -- Widgets that are aligned to the upper left
     local left_layout = wibox.layout.fixed.horizontal()
@@ -375,12 +361,6 @@ for s = 1, screen.count() do
     right_layout:add(arrl_ld)
     right_layout:add(neticon)
     right_layout:add(netwidget)
-    
-    --right_layout:add(arrl_dl)
-    --right_layout:add(memicon)
-    --right_layout:add(cexio)
-    --right_layout:add(arrl_ld)
-
     right_layout:add(arrl_dl)
     right_layout:add(mytextclock)
     right_layout:add(spr)
@@ -416,6 +396,9 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey }, "Right",  awful.tag.viewnext       ),
     awful.key({ modkey }, "Escape", awful.tag.history.restore),
 
+    -- Non-empty tag browsing
+    awful.key({ altkey }, "Left", function () lain.util.tag_view_nonempty(-1) end),
+    awful.key({ altkey }, "Right", function () lain.util.tag_view_nonempty(1) end),
 
     -- Default client focus
     awful.key({ altkey }, "k",
@@ -551,7 +534,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey }, "g", function () awful.util.spawn(graphics) end),
 
     -- Prompt
-    awful.key({ modkey }, "F1", function () mypromptbox[mouse.screen]:run() end),
+    awful.key({ modkey }, "r", function () mypromptbox[mouse.screen]:run() end),
     awful.key({ modkey }, "x",
               function ()
                   awful.prompt.run({ prompt = "Run Lua code: " },
@@ -599,7 +582,7 @@ for i = 1, 9 do
                       local screen = mouse.screen
                       local tag = awful.tag.gettags(screen)[i]
                       if tag then
-                         awf.tag.viewtoggle(tag)
+                         awful.tag.viewtoggle(tag)
                       end
                   end),
         awful.key({ modkey, "Shift" }, "#" .. i + 9,
@@ -638,13 +621,10 @@ awful.rules.rules = {
                      buttons = clientbuttons,
 	                   size_hints_honor = false } },
     { rule = { class = "URxvt" },
-          properties = { opacity = 0.9 } },
+          properties = { opacity = 0.99 } },
 
     { rule = { class = "MPlayer" },
           properties = { floating = true } },
-
-    { rule = { class = "chromium" },
-        properties = {floating = false }},
 
     { rule = { class = "Dwb" },
           properties = { tag = tags[1][1] } },
